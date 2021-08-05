@@ -1,12 +1,24 @@
 const express = require('express');
 const routes = express.Router();
 
-const productController = require('../controllers/productController')
+const {eAdmin} = require('../middlewares/auth');
 
-routes.post('/product', productController.create)
-routes.get('/product', productController.index)
-routes.get('/product/:id', productController.show)
-routes.put('/product', productController.edit)
-routes.delete('/product/:id', productController.delete)
+const productController = require('../controllers/productController')
+const userController = require('../controllers/userController')
+const sessionController = require('../controllers/sessionController')
+
+routes.post('/product',eAdmin, productController.create)
+routes.get('/product',eAdmin, productController.index)
+routes.get('/product/:id',eAdmin, productController.show)
+routes.put('/product',eAdmin, productController.edit)
+routes.delete('/product/:id',eAdmin, productController.delete)
+
+routes.post('/user',eAdmin, userController.create)
+routes.get('/user',eAdmin, userController.index)
+routes.get('/user/:id',eAdmin, userController.show)
+routes.put('/user',eAdmin, userController.edit)
+routes.delete('/user/:id',eAdmin, userController.delete)
+
+routes.post('/session', sessionController.create)
 
 module.exports = routes;

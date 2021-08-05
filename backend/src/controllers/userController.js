@@ -1,41 +1,45 @@
-const Product = require('../models/Products');
+const bcryptjs = require('bcryptjs')
+const User = require('../models/Users');
 
 module.exports = {
 
   async create(request, response) {
-    const { name, amount, purchasePrice, salePrice } = request.body
-    await Product.create({
+    let { name, email, password } = request.body;
+
+    password = await bcryptjs.hash(password, 8)
+
+    await User.create({
       name,
-      amount,
-      purchasePrice,
-      salePrice
-    }).then((product) => {
+      email,
+      password
+
+    }).then((User) => {
       return response.json({
         error: false,
-        product
+        User
       });
     }).catch(() => {
       return response.status(400).json({
         error: true,
-        message: 'Product not created'
+        message: 'User not created'
       })
     })
   },
 
   async index(request, response) {
-    await Product.findAll({
-      attributes: ['id', 'name', 'purchasePrice', 'salePrice', 'amount'],
+    await User.findAll({
+      attributes: ['id', 'name', 'email'],
       order: [['id', 'DESC']]
     })
-      .then((product) => {
+      .then((User) => {
         return response.json({
           error: false,
-          product
+          User
         });
       }).catch(() => {
         return response.status(400).json({
           error: true,
-          message: 'Products not exists'
+          message: 'Users not exists or not found'
         })
       })
   },
@@ -43,35 +47,38 @@ module.exports = {
   async show(request, response) {
     const { id } = request.params;
 
-    await Product.findByPk(id)
-      .then((product) => {
+    await User.findByPk(id)
+      .then((User) => {
         return response.json({
           error: false,
-          product
+          User
         });
       }).catch(() => {
         return response.status(400).json({
           error: true,
-          message: 'Product not found'
+          message: 'User not found'
         })
       })
   },
 
   async edit(request, response) {
+    let { name, email, password } = request.body;
     const { id } = request.body;
 
-    await Product.update(request.body, {
+    password = await bcryptjs.hash(password, 8)
+
+    await User.update({name, email, password}, {
       where: { id }
     })
       .then(() => {
         return response.json({
           error: false,
-          message: 'Product edited successfully!'
+          message: 'User edited successfully!'
         });
       }).catch(() => {
         return response.status(400).json({
           error: true,
-          message: 'Unedited product'
+          message: 'Unedited User'
         })
       })
   },
@@ -79,18 +86,18 @@ module.exports = {
   async delete(request, response) {
     const { id } = request.params;
 
-    await Product.destroy({
+    await User.destroy({
       where: { id }
     })
       .then(() => {
         return response.json({
           error: false,
-          message: 'Successfully deleted product!'
+          message: 'Successfully deleted User!'
         });
       }).catch(() => {
         return response.status(400).json({
           error: true,
-          message: 'Product not deleted'
+          message: 'User not deleted'
         })
       })
   },
