@@ -8,53 +8,74 @@ import {
   ButtonSection,
   ButtonSuccess,
   Table, ButtonAction,
-  AlertAction
+  AlertAction,
+  Hr
 } from '../../common/customStyles';
 
 import Menu from '../../components/Menu'
+import api from '../../services/api';
 
 const List = () => {
   const { state } = useLocation();
-
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
-
   const [status, setStatus] = useState({
     type: state ? state.type : '',
     message: state ? state.message : '',
   });
 
   async function productList() {
-
-    var value = [
-      {
-        "id": 2,
-        "name": 'Teclado',
-        "value": 52.47,
-        "amount": 25
-      },
-      {
-        "id": 1,
-        "name": 'Mouse',
-        "value": 31.21,
-        "amount": 43
-      },
-      {
-        "id": 3,
-        "name": 'Monitor',
-        "value": 999.21,
-        "amount": 431
+    setLoading(true)
+    try {
+      const response = await api.get('/product')
+      //console.log(response.data)
+      setData(response.data.product);
+    } catch (err) {
+      if (err.response) {
+        setStatus({
+          type: 'error',
+          message: err.response.data.message
+        })
+      } else {
+        setStatus({
+          type: 'error',
+          message: 'Erro: Tente novamente mais tarde'
+        })
       }
-    ]
-    setData(value)
-  };
+    } finally {
+      setLoading(false)
+    }
+  }
 
   useEffect(() => {
     productList()
   }, []);
 
   async function deleteProduct(productId) {
-    alert('Apagar o produto: ' + productId)
+    try {
+      await api.delete(`product/${productId}`)
+      setStatus({
+        type: 'success',
+        message: 'Produto deletado com sucesso!'
+      })
+      productList()
+    } catch (err) {
+      if (err.response) {
+        setStatus({
+          type: 'error',
+          message: err.response.data.message
+        })
+      } else {
+        setStatus({
+          type: 'error',
+          message: 'Erro: Tente novamente mais tarde'
+        })
+      }
+    } finally {
+
+    }
   }
+  
   return (
     <Container>
       <Menu />
@@ -67,14 +88,15 @@ const List = () => {
       </SubTitle>
 
       {status.type === 'success' ? <AlertAction type='success'>{status.message}</AlertAction> : ''}
+      {status.type === 'error' ? <AlertAction type='error'>{status.message}</AlertAction> : ''}
+      <Hr />
 
-      <hr />
       <Table>
         <thead>
           <tr>
             <th>ID:</th>
             <th>Nome:</th>
-            <th>Valor:</th>
+            <th>Preço de venda:</th>
             <th>Quantidade:</th>
             <th>Ações:</th>
           </tr>
@@ -84,7 +106,7 @@ const List = () => {
             <tr key={product.id}>
               <td>{product.id}</td>
               <td>{product.name}</td>
-              <td>{product.value}</td>
+              <td>{new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(product.salePrice)}</td>
               <td>{product.amount}</td>
 
               <td>
