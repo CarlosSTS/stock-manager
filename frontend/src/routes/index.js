@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import SignIn from '../pages/SignIn';
 import Dashboard from '../pages/Dashboard';
 import List from '../pages/List';
 import Read from '../pages/Read';
@@ -11,8 +12,9 @@ export default function Routes() {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/" exact component={SignIn} />
 
-        <Route path="/" exact component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route path="/list" component={List} />
         <Route path="/read/:id" component={Read} />
         <Route path="/create" component={Create} />

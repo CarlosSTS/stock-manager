@@ -38,15 +38,15 @@ export const ButtonSuccess = styled.button`
 
 export const ButtonAction = styled.button`
   background-color: #fff;
-  color: ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107': props.action === 'delete' ? '#dc3545' : '#0dcaf0'};
+  color: ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107' : props.action === 'delete' ? '#dc3545' : '#0dcaf0'};
   padding: 5px 8px;
-  border: 1px solid  ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107': props.action === 'delete' ? '#dc3545' : '#0dcaf0'};;
+  border: 1px solid  ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107' : props.action === 'delete' ? '#dc3545' : '#0dcaf0'};;
   border-radius: 4px;
   font-size: 15px;
 
 :hover {
   color: #fff;
-  background-color:  ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107': props.action === 'delete' ? '#dc3545' : '#0dcaf0'};;
+  background-color:  ${props => props.action === 'read' ? '#0d6efd' : props.action === 'edit' ? '#ffc107' : props.action === 'delete' ? '#dc3545' : '#0dcaf0'};;
 }
 `;
 
@@ -67,7 +67,7 @@ export const Table = styled.table`
     padding: 8px;
   }
   `;
-  export const SpanView = styled.p`
+export const SpanView = styled.p`
   font-size: 18px;
   margin-top: 8px;
   `;
@@ -95,15 +95,15 @@ margin-bottom: 16px;
 resize: vertical;
 `;
 
-export const Hr  = styled.hr`
+export const Hr = styled.hr`
 margin-bottom: 15px;
 `;
 
 export const AlertAction = styled.p`
-  background-color: ${props => props.type === 'error' ?  '#f8d7da' : '#d1e7dd'};
-  color: ${props => props.type === 'error' ?  '#842029' : '#0f5132'};
+  background-color: ${props => props.type === 'error' ? '#f8d7da' : '#d1e7dd'};
+  color: ${props => props.type === 'error' ? '#842029' : '#0f5132'};
   margin: 10px 0;
   padding: 7px;
-  border: 1px solid ${props => props.type === 'error' ?  '#f5c2c7' : '#badbcc'};
+  border: 1px solid ${props => props.type === 'error' ? '#f5c2c7' : '#badbcc'};
   border-radius: 7px;
 `;

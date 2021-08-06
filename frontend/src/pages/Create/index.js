@@ -20,7 +20,7 @@ import api from '../../services/api';
 import Menu from '../../components/Menu';
 
 const Create = () => {
-
+  const token = localStorage.getItem('@stockmanager:token')
   const [product, setProduct] = useState({
     name: '',
     purchasePrice: '',
@@ -44,7 +44,11 @@ const Create = () => {
     e.preventDefault();
 
     try {
-      await api.post('/product', product)
+      await api.post('/product', product, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       //console.log(response.data)
 
       setStatus({
@@ -155,7 +159,7 @@ const Create = () => {
           onChange={valueInput}
         />
 
-        <ButtonSuccess type='submit'>Cadastrar</ButtonSuccess>
+        <ButtonSuccess type='submit'>{loading ? 'Cadastrando...':'Cadastrar'}</ButtonSuccess>
       </Form >
     </Container>
   )

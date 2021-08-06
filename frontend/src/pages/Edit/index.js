@@ -27,7 +27,8 @@ const Edit = (props) => {
     type: state ? state.type : '',
     message: state ? state.message : '',
   });
-
+  
+  const token = localStorage.getItem('@stockmanager:token')
   const [name, setName] = useState('')
   const [purchasePrice, setPurchasePrice] = useState('')
   const [salePrice, setSalePrice] = useState('')
@@ -39,7 +40,11 @@ const Edit = (props) => {
   async function getProduct() {
     setLoading(true)
     try {
-      const response = await api.get(`/product/${id}`)
+      const response = await api.get(`/product/${id}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setName(response.data.product.name)
 
       setPurchasePrice(response.data.product.purchasePrice)
@@ -112,7 +117,11 @@ const Edit = (props) => {
         name,
         salePrice,
         purchasePrice,
-        amount
+        amount  
+      },{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
       //console.log(response.data)
 
@@ -197,7 +206,7 @@ const Edit = (props) => {
           onChange={e => setAmount(e.target.value)}
         />
 
-        <ButtonAction action='edit' type='submit'>Salvar</ButtonAction>
+        <ButtonAction action='edit' type='submit'>{loading ? 'Salvando...' : 'Salvar'}</ButtonAction>
       </Form>
     </Container>
   )

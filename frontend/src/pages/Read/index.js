@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation,Redirect } from 'react-router-dom';
+import { Link, useLocation, Redirect } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa'
 
 import {
   Container,
@@ -9,15 +10,16 @@ import {
   ButtonAction,
   SpanView,
   Hr,
-  AlertAction
 } from '../../common/customStyles';
 
+import { Icon } from './styles'
 import api from '../../services/api';
 
 import Menu from '../../components/Menu';
 
 const Read = (props) => {
   const { state } = useLocation();
+  const token = localStorage.getItem('@stockmanager:token')
 
   const [id] = useState(props.match.params.id)
   const [data, setData] = useState('');
@@ -30,7 +32,11 @@ const Read = (props) => {
   async function getProduct() {
     setLoading(true)
     try {
-      const response = await api.get(`/product/${id}`)
+      const response = await api.get(`/product/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       //console.log(response.data)
       setData(response.data.product);
     } catch (err) {
@@ -73,12 +79,17 @@ const Read = (props) => {
         }
       }} /> : ''}
       <Hr />
-
-      <SpanView>ID: {data.id}</SpanView>
-      <SpanView>Nome: {data.name}</SpanView>
-      <SpanView>Valor de Compra: {new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(data.purchasePrice)}</SpanView>
-      <SpanView>Preço de Venda: {new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(data.salePrice)}</SpanView>
-      <SpanView>Quantidade: {data.amount}</SpanView>
+      {loading ? <Icon loading={loading}>
+        <FaSpinner size={100} />
+      </Icon> : (
+        <>
+          <SpanView>ID: {data.id}</SpanView>
+          <SpanView>Nome: {data.name}</SpanView>
+          <SpanView>Valor de Compra: {new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(data.purchasePrice)}</SpanView>
+          <SpanView>Preço de Venda: {new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(data.salePrice)}</SpanView>
+          <SpanView>Quantidade: {data.amount}</SpanView>
+        </>
+      )}
     </Container>
   )
 }

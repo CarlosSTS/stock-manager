@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { FaSpinner } from 'react-icons/fa'
 
 import {
   Container,
@@ -14,8 +15,10 @@ import {
 
 import Menu from '../../components/Menu'
 import api from '../../services/api';
+import { Icon } from './styles';
 
 const List = () => {
+  const token = localStorage.getItem('@stockmanager:token')
   const { state } = useLocation();
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
@@ -27,15 +30,19 @@ const List = () => {
   async function productList() {
     setLoading(true)
     try {
-      const response = await api.get('/product')
-      //console.log(response.data)
+      const response = await api.get('/product', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+     // console.log(response.data)
       setData(response.data.product);
-    } catch (err) {
-      if (err.response) {
+    } catch (error) {
+      if (error.response) {
         setStatus({
           type: 'error',
-          message: err.response.data.message
-        })
+          message: error.response.data.message
+        });
       } else {
         setStatus({
           type: 'error',
@@ -49,11 +56,15 @@ const List = () => {
 
   useEffect(() => {
     productList()
-  }, []);
+  }, [token]);
 
   async function deleteProduct(productId) {
     try {
-      await api.delete(`product/${productId}`)
+      await api.delete(`product/${productId}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
       setStatus({
         type: 'success',
         message: 'Produto deletado com sucesso!'
@@ -83,7 +94,7 @@ const List = () => {
       <SubTitle>
         <Title>Listar</Title>
         <ButtonSection>
-          <Link to='/create'><ButtonSuccess type='button'>Cadastrar</ButtonSuccess></Link>
+          <Link to='/create'><ButtonSuccess  type='button'>Cadastrar</ButtonSuccess></Link>
         </ButtonSection>
       </SubTitle>
 
@@ -102,21 +113,26 @@ const List = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map(product => (
-            <tr key={product.id}>
-              <td>{product.id}</td>
-              <td>{product.name}</td>
-              <td>{new Intl.NumberFormat('pt-br', {style: 'currency', currency: 'BRL'}).format(product.salePrice)}</td>
-              <td>{product.amount}</td>
+          {loading ? <Icon loading={loading}>
+            <FaSpinner size={100}/>
+          </Icon> : (
+            data.map(product => (
+              <tr key={product.id}>
+                <td>{product.id}</td>
+                <td>{product.name}</td>
+                <td>{new Intl.NumberFormat('pt-br', { style: 'currency', currency: 'BRL' }).format(product.salePrice)}</td>
+                <td>{product.amount}</td>
 
-              <td>
-                <Link to={`/read/${product.id}`}><ButtonAction type='ButtonAction' action='read'>Visualizar</ButtonAction></Link>{' '}
-                <Link to={`/edit/${product.id}`}><ButtonAction type='ButtonAction' action='edit'>Editar</ButtonAction></Link>{' '}
-                <Link to={'#'}><ButtonAction action='delete' onClick={() =>
-                  deleteProduct(product.id)}>Apagar</ButtonAction></Link>
-              </td>
-            </tr>
-          ))}
+                <td>
+                  <Link to={`/read/${product.id}`}><ButtonAction type='ButtonAction' action='read'>Visualizar</ButtonAction></Link>{' '}
+                  <Link to={`/edit/${product.id}`}><ButtonAction type='ButtonAction' action='edit'>Editar</ButtonAction></Link>{' '}
+                  <Link to={'#'}><ButtonAction action='delete' onClick={() =>
+                    deleteProduct(product.id)}>{loading ? 'Apagando...' : 'Apagar'}</ButtonAction></Link>
+                </td>
+              </tr>
+            ))
+          )}
+
         </tbody>
       </Table>
     </Container>
