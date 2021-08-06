@@ -7,16 +7,16 @@ module.exports = {
         const authHeader = request.headers.authorization;
         if(!authHeader){
             return response.status(400).json({
-                erro: true,
-                mensage: "Erro: Necessário realizar o login para acessar a página!"
+                error: true,
+                message: "Erro: Necessário realizar o login para acessar a página!"
             });
         }
         const [, token] = authHeader.split(' ');
     
         if(!token){
             return response.status(400).json({
-                erro: true,
-                mensage: "Erro: Necessário realizar o login para acessar a página!"
+                error: true,
+                message: "Erro: Necessário realizar o login para acessar a página!"
             });
         }
     
@@ -26,8 +26,8 @@ module.exports = {
             return next();
         }catch(err){
             return response.status(400).json({
-                erro: true,
-                mensage: "Erro: Necessário realizar o login para acessar a página!"
+                error: true,
+                message: "Erro: Necessário realizar o login para acessar a página!"
             });
         }
     }
