@@ -2,7 +2,6 @@ const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 require('dotenv').config();
-
 const User = require('../models/Users');
 
 module.exports = {
@@ -11,7 +10,7 @@ module.exports = {
     const { email, password } = request.body;
 
     const user = await User.findOne({
-      attributes: ['id', 'name', 'email','password'],
+      attributes: ['id', 'name', 'email', 'password'],
       where: {
         email,
       }
@@ -30,7 +29,7 @@ module.exports = {
         message: 'Incorrect e-mail or password'
       })
     }
-    var token = jwt.sign({id: user.id}, process.env.SECRET,{
+    var token = jwt.sign({ id: user.id }, process.env.SECRET, {
       expiresIn: '1d'
     })
 
@@ -39,4 +38,21 @@ module.exports = {
       user
     })
   },
+
+  async show(request, response) {
+    await User.findByPk(request.userId, {
+      attributes: ['id', 'name', 'email']
+    })
+      .then((user) => {
+        return response.json({
+          error: false,
+          user
+        });
+      }).catch(() => {
+        return response.status(400).json({
+          error: true,
+          message: 'User not found'
+        })
+      })
+  }
 }
