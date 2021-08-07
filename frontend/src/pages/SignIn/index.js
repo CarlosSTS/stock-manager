@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Form, Input } from '@rocketseat/unform'
 import * as Yup from 'yup'
 import { Link, useHistory } from 'react-router-dom'
@@ -6,6 +6,8 @@ import { FiArrowRightCircle } from 'react-icons/fi'
 
 import api from '../../services/api';
 import { AlertAction } from '../../common/customStyles'
+
+import {Context} from '../../AuthContext/AuthContext';
 
 import { Container, H1,Section } from './styles';
 
@@ -15,6 +17,8 @@ const schema = Yup.object().shape({
 });
 
 export default function SignIn() {
+  const {signIn} = useContext(Context);
+
   const [loading,setLoading] = useState(false)
   const history= useHistory();
   const [status, setStatus] = useState({
@@ -27,8 +31,8 @@ export default function SignIn() {
       try {
         const response = await api.post('/session',data)
         localStorage.setItem('@stockmanager:token',response.data.token)
+        signIn(true)
         history.push('/dashboard')
-        console.table(response.data)
       }catch (err) {
         if (err.response) {
           setStatus({
