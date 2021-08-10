@@ -32,7 +32,7 @@ function AuthProvider({ children }) {
             }
         }
 
-        api.get("/validation", headers)
+        api.get("/me", headers)
             .then(() => {
                 return true;
             }).catch((err) => {
