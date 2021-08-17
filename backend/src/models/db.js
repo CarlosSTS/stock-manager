@@ -1,8 +1,9 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('stockManager', 'carlos', 'c1a2r3s4#A', {
+const sequelize = new Sequelize({
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'sqlite',
+  storage: './src/models/db.sqlite'
 });
 
 sequelize.authenticate().then(function () {
