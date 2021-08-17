@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import screenOptions from "./constants/screenOptions";
 
+import SignIn from "./pages/SignIn";
 import Home from "./pages/Home";
 import BiggerStock from "./pages/BiggerStock";
 import SmallerStock from "./pages/SmallerStock";
@@ -13,6 +14,11 @@ const Routes = () => {
 
   return (
     <Navigator screenOptions={screenOptions}>
+       <Screen name="SignIn" component={SignIn}
+        options={() => ({ title: 'Faça seu login' }
+        )}
+      />
+
       <Screen name="Home" component={Home}
         options={() => ({ title: 'Home' }
         )}
