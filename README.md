@@ -39,7 +39,7 @@ O app contém os seguintes módulos:
 
 ## MOBILE
 RODANDO O PROJETO MOBILE
-* yarn install=>  para instalar Dependências do projeto
+* yarn install => para instalar Dependências do projeto
 * yarn start => para inicializar o projeto
 * yarn android => para executar o projeto no emulador android
 * yarn ios => Para executar no emulador iOS
@@ -47,6 +47,6 @@ RODANDO O PROJETO MOBILE
 > lembre-se de trocar o IP pelo da sua rede no seguintes arquivos: api.js
 
 ## Feito por Carlos Ferreira
-* [github](https://www.github.com/CarlosSTS)
-* [email](mailto://carlossts826@gmail.com)
+* [Github](https://www.github.com/CarlosSTS)
+* [Email](mailto://carlossts826@gmail.com)
 * [LinkedIn](https://www.linkedin.com/in/carlos-ferreira-4b2ba219a/)
