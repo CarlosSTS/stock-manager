@@ -5,7 +5,7 @@
  
 > 1. Criptografia de senha
 > 2. Validação de rotas com base no ([JWT](https://jwt.io/))
-> 3. Envio de mesangens para o front-end
+> 3. Envio de mensagens para o front-end
 > 4. Utilização de middlewares
 
 3. A versão web lida com o gerenciamento dos produtos como: 
