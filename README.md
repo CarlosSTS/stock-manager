@@ -29,7 +29,7 @@ O app contém os seguintes módulos:
 * Uma tela com uso de gráficos para mostrar os produtos com menor estoque.
 
 ## Explicação do aplicativo no LinkedIn
-* [Explicação do aplicativo](https://www.linkedin.com/posts/carlos-ferreira-4b2ba219a_js-reactnative-redux-activity-6802983240601747456-2iY6)
+* [Explicação do aplicativo](https://www.linkedin.com/posts/carlos-ferreira-4b2ba219a_js-yup-formik-activity-6833550560164114432-LLJM)
 
 ## Páginas do app
 ![Foto do App login](https://github.com/CarlosSTS/stock-manager/blob/master/images/login.png)
