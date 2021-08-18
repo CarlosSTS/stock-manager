@@ -44,7 +44,17 @@ RODANDO O PROJETO MOBILE
 * yarn android => para executar o projeto no emulador android
 * yarn ios => Para executar no emulador iOS
 
+## FRONTEND
+RODANDO O PROJETO FRONTEND
+* yarn install => para instalar as Dependências do projeto
+* yarn start => para inicializar o projeto
+* 
 > lembre-se de trocar o IP pelo da sua rede no seguintes arquivos: api.js
+
+## BACKEND
+RODANDO O PROJETO BACKEND
+* yarn install => para instalar as Dependências do projeto
+* yarn start => para inicializar o projeto
 
 ## Feito por Carlos Ferreira
 * [Github](https://www.github.com/CarlosSTS)
