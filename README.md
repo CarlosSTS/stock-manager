@@ -48,7 +48,6 @@ RODANDO O PROJETO MOBILE
 RODANDO O PROJETO FRONTEND
 * yarn install => para instalar as Dependências do projeto
 * yarn start => para inicializar o projeto
-* 
 > lembre-se de trocar o IP pelo da sua rede no seguintes arquivos: api.js
 
 ## BACKEND
