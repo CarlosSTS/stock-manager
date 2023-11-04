@@ -1,4 +1,4 @@
-# stock-manager 
+# Stock-manager 
 
 1. Sistema focado no gerenciamento de estoque de produtos.
 2. A api trabalha com vários tipos de validações além do uso de:
