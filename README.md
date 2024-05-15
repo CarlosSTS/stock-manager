@@ -32,27 +32,27 @@ O app contém os seguintes módulos:
 * [Explicação do aplicativo](https://www.linkedin.com/posts/carlos-ferreira-4b2ba219a_js-yup-formik-activity-6833550560164114432-LLJM)
 
 ## Páginas do app
-![Foto do App login](https://github.com/CarlosSTS/stock-manager/blob/master/images/login.png)
-![Foto do App Home](https://github.com/CarlosSTS/stock-manager/blob/master/images/home.png)
-![Foto do App BiggerStock](https://github.com/CarlosSTS/stock-manager/blob/master/images/maior.png)
-![Foto do App SmallerStock](https://github.com/CarlosSTS/stock-manager/blob/master/images/menor.png)
+![Foto do App login](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Flogin.png?alt=media&token=d61eae05-6dc4-42d9-92c0-7cf77d93a9a8)
+![Foto do App Home](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fhome.png?alt=media&token=0c9bc5aa-a777-41f0-80a1-09fac48f41e1)
+![Foto do App BiggerStock](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fmaior.png?alt=media&token=a129c845-789b-4baa-be4c-1bcdf4197394)
+![Foto do App SmallerStock](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fmenor.png?alt=media&token=70f7f672-fdfa-45fd-b484-ee990e7e22cb)
 
 ## MOBILE
 RODANDO O PROJETO MOBILE
-* yarn install => para instalar Dependências do projeto
+* yarn install => para instalar dependências do projeto
 * yarn start => para inicializar o projeto
 * yarn android => para executar o projeto no emulador android
 * yarn ios => Para executar no emulador iOS
 
 ## FRONTEND
 RODANDO O PROJETO FRONTEND
-* yarn install => para instalar as Dependências do projeto
+* yarn install => para instalar as dependências do projeto
 * yarn start => para inicializar o projeto
 > lembre-se de trocar o IP pelo da sua rede no seguintes arquivos: api.js
 
 ## BACKEND
 RODANDO O PROJETO BACKEND
-* yarn install => para instalar as Dependências do projeto
+* yarn install => para instalar as dependências do projeto
 * yarn start => para inicializar o projeto
 
 ## Feito por Carlos Ferreira
