@@ -32,10 +32,10 @@ O app contém os seguintes módulos:
 * [Explicação do aplicativo](https://www.linkedin.com/posts/carlos-ferreira-4b2ba219a_js-yup-formik-activity-6833550560164114432-LLJM)
 
 ## Páginas do app
-![Foto do App login](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Flogin.png?alt=media&token=d61eae05-6dc4-42d9-92c0-7cf77d93a9a8)
-![Foto do App Home](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fhome.png?alt=media&token=0c9bc5aa-a777-41f0-80a1-09fac48f41e1)
-![Foto do App BiggerStock](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fmaior.png?alt=media&token=a129c845-789b-4baa-be4c-1bcdf4197394)
-![Foto do App SmallerStock](https://firebasestorage.googleapis.com/v0/b/portfolio-web-7fbff.appspot.com/o/github_projects%2Fstock-manager%2Fmenor.png?alt=media&token=70f7f672-fdfa-45fd-b484-ee990e7e22cb)
+![Foto do App login](https://res.cloudinary.com/dbw8igay3/image/upload/v1766429842/github_projects/stock-manager/login.png)
+![Foto do App Home](https://res.cloudinary.com/dbw8igay3/image/upload/v1766429839/github_projects/stock-manager/home.png)
+![Foto do App BiggerStock](https://res.cloudinary.com/dbw8igay3/image/upload/v1766429845/github_projects/stock-manager/maior.png)
+![Foto do App SmallerStock](https://res.cloudinary.com/dbw8igay3/image/upload/v1766429848/github_projects/stock-manager/menor.png)
 
 ## MOBILE
 RODANDO O PROJETO MOBILE
@@ -57,5 +57,5 @@ RODANDO O PROJETO BACKEND
 
 ## Feito por Carlos Ferreira
 * [Github](https://www.github.com/CarlosSTS)
-* [Email](mailto://carlossts826@gmail.com)
+* [Email](mailto://carlossts.dev@gmail.com)
 * [LinkedIn](https://www.linkedin.com/in/carlos-ferreira-4b2ba219a/)
